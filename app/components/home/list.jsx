@@ -35,6 +35,7 @@ let List = React.createClass({
 	},
 
 	receivedArticle(data) {
+		console.log(data);
 		const articles = this.state.articles;
 		articles.push(data);
 		this.setState({
