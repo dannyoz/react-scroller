@@ -24,7 +24,8 @@ var Article = _react2['default'].createClass({
 
 	getInitialState: function getInitialState() {
 		return {
-			scrollable: true
+			scrollableDown: true,
+			scrollableUp: true
 		};
 	},
 
@@ -36,14 +37,20 @@ var Article = _react2['default'].createClass({
 			var rect = art.getBoundingClientRect();
 			var bottom = rect.top + rect.height - window.innerHeight;
 
-			if (bottom < 100 && this.state.scrollable) {
-				this.setState({
-					scrollable: false
-				});
-				console.log('hit bottom');
-				_fluxAppActions2['default'].loadNextArticle(this.props.data.next_article);
+			if (bottom < 100 && this.state.scrollableDown) {
+				this.loadNextArticle();
 			}
 		}
+	},
+
+	loadNextArticle: function loadNextArticle() {
+		var article = this.props.data;
+		this.setState({
+			scrollableDown: false
+		});
+		console.log('hit bottom');
+		_fluxAppActions2['default'].loadNextArticle(article.next_article);
+		history.pushState(null, null, article.next_article_url);
 	},
 
 	render: function render() {

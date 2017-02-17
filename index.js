@@ -30,6 +30,7 @@ app.get('/article/:id', function(req, res) {
 	article.title = 'Article ' + req.params.id;
 	article.url = '/article/'+ req.params.id;
   article.next_article = Number(req.params.id) + 1;
+  article.next_article_url = '/article/'+(Number(req.params.id) + 1);
 	res.status(200).json(article);
 });
 
