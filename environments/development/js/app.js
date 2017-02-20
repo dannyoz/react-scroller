@@ -133,6 +133,8 @@ var _sharedAppConstants = require('../../shared/app-constants');
 
 var _sharedAppConstants2 = _interopRequireDefault(_sharedAppConstants);
 
+var articleId = location.pathname.indexOf('article') > -1 ? Number(location.pathname.replace('/article/', '')) : 1;
+
 var List = _react2['default'].createClass({
 	displayName: 'List',
 
@@ -145,7 +147,8 @@ var List = _react2['default'].createClass({
 	},
 
 	componentDidMount: function componentDidMount() {
-		this.getArticle(1);
+		document.documentElement.scrollTop = 0;
+		this.getArticle(articleId);
 		_fluxAppStore2['default'].addChangeListener(_sharedAppConstants2['default'].RECEIVE_ARTICLES, this.receivedArticle);
 		_fluxAppStore2['default'].addChangeListener(_sharedAppConstants2['default'].LOAD_NEXT_ARTICLE, this.getArticle);
 		window.addEventListener('scroll', this.handleScroll);
@@ -474,7 +477,7 @@ Object.defineProperty(exports, '__esModule', {
 var appConstants = {
 	'GET_ARTICLES': 'GET_ARTICLES',
 	'RECEIVE_ARTICLES': 'RECEIVE_ARTICLES',
-	'APIURL': '',
+	'APIURL': '/api',
 	'LOAD_NEXT_ARTICLE': 'LOAD_NEXT_ARTICLE'
 };
 

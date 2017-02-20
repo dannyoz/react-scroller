@@ -25,7 +25,7 @@ app.get('/env', function(req, res) {
 	res.status(200).send(process.env);
 });
 
-app.get('/article/:id', function(req, res) {
+app.get('/api/article/:id', function(req, res) {
 	let article = articleModel;
 	article.title = 'Article ' + req.params.id;
 	article.url = '/article/'+ req.params.id;

@@ -1,4 +1,8 @@
 [{
 	"title" : "Home",
 	"path" : "/"
+},
+{
+	"title" : "Article",
+	"path" : "/article/:id"
 }]
